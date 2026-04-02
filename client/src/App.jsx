@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Roadmap from './pages/Roadmap'
+import ResumeChecker from './pages/ResumeChecker'
 import Navbar from './components/Navbar'
 
 const PrivateRoute = ({ children }) => {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/roadmap" element={<PrivateRoute><Roadmap /></PrivateRoute>} />
+        <Route path="/resume" element={<PrivateRoute><ResumeChecker /></PrivateRoute>} />
       </Routes>
     </div>
   )

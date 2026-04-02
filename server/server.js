@@ -4,6 +4,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import authRoutes from './routes/auth.js'
 import roadmapRoutes from './routes/roadmap.js'
+import resumeRoutes from './routes/resume.js'
 
 dotenv.config()
 
@@ -12,9 +13,9 @@ const app = express()
 app.use(cors({ origin: 'http://localhost:5173' }))
 app.use(express.json())
 
-// Routes
 app.use('/api/auth', authRoutes)
 app.use('/api/roadmap', roadmapRoutes)
+app.use('/api/resume', resumeRoutes)
 
 app.get('/', (req, res) => {
   res.json({ message: 'SkillPath AI Server is running! 🚀' })
