@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Roadmap from './pages/Roadmap'
 import ResumeChecker from './pages/ResumeChecker'
+import MockInterview from './pages/MockInterview'
 import Navbar from './components/Navbar'
 
 const PrivateRoute = ({ children }) => {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/roadmap" element={<PrivateRoute><Roadmap /></PrivateRoute>} />
         <Route path="/resume" element={<PrivateRoute><ResumeChecker /></PrivateRoute>} />
+        <Route path="/interview" element={<PrivateRoute><MockInterview /></PrivateRoute>} />
       </Routes>
     </div>
   )
