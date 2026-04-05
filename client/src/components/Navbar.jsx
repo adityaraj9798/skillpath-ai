@@ -18,11 +18,12 @@ const Navbar = () => {
       <div className="flex gap-4 items-center">
         {user ? (
           <>
-            <span className="text-gray-400 text-sm">Hey, {user.name} 👋</span>
+            <span className="text-gray-400 text-sm">Hey, {user.name}</span>
             <Link to="/dashboard" className="text-gray-300 hover:text-white transition">Dashboard</Link>
             <Link to="/roadmap" className="text-gray-300 hover:text-white transition">Roadmap</Link>
             <Link to="/resume" className="text-gray-300 hover:text-white transition">Resume</Link>
-            <Link to="/interview" className="text-gray-300 hover:text-white transition">Mock Interview</Link>
+            <Link to="/interview" className="text-gray-300 hover:text-white transition">Interview</Link>
+            <Link to="/jobs" className="text-gray-300 hover:text-white transition">Jobs</Link>
             <button
               onClick={handleLogout}
               className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition"
