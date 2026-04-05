@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import Roadmap from '../models/Roadmap.js'
 import { generateRoadmap } from '../utils/geminiHelper.js'
 
@@ -7,10 +9,10 @@ export const createRoadmap = async (req, res) => {
     const { currentSkills, targetRole } = req.body
     const userId = req.user.id
 
-    // Generate roadmap using Gemini AI
+    console.log('Generating roadmap for:', currentSkills, targetRole)
+
     const weeks = await generateRoadmap(currentSkills, targetRole)
 
-    // Save to DB
     const roadmap = await Roadmap.create({
       userId,
       targetRole,
@@ -25,6 +27,7 @@ export const createRoadmap = async (req, res) => {
     })
 
   } catch (err) {
+    console.log('ROADMAP ERROR:', err.message)
     res.status(500).json({ message: 'Server error', error: err.message })
   }
 }
@@ -41,6 +44,7 @@ export const getRoadmap = async (req, res) => {
     res.status(200).json(roadmap)
 
   } catch (err) {
+    console.log('GET ROADMAP ERROR:', err.message)
     res.status(500).json({ message: 'Server error', error: err.message })
   }
 }
@@ -56,10 +60,8 @@ export const markWeekComplete = async (req, res) => {
       return res.status(404).json({ message: 'Roadmap not found' })
     }
 
-    // Mark week complete
     roadmap.weeks[weekIndex].completed = true
 
-    // Calculate job readiness %
     const completedWeeks = roadmap.weeks.filter(w => w.completed).length
     roadmap.jobReadiness = Math.round((completedWeeks / roadmap.weeks.length) * 100)
 
@@ -72,6 +74,7 @@ export const markWeekComplete = async (req, res) => {
     })
 
   } catch (err) {
+    console.log('MARK COMPLETE ERROR:', err.message)
     res.status(500).json({ message: 'Server error', error: err.message })
   }
 }
