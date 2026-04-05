@@ -6,6 +6,7 @@ const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [darkMode, setDarkMode] = useState(true)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -17,7 +18,18 @@ export const AuthProvider = ({ children }) => {
     } else {
       setLoading(false)
     }
+
+    const savedMode = localStorage.getItem('darkMode')
+    if (savedMode !== null) {
+      setDarkMode(savedMode === 'true')
+    }
   }, [])
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode
+    setDarkMode(newMode)
+    localStorage.setItem('darkMode', newMode)
+  }
 
   const login = (token, userData) => {
     localStorage.setItem('token', token)
@@ -30,7 +42,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout, loading, darkMode, toggleDarkMode }}>
       {children}
     </AuthContext.Provider>
   )
