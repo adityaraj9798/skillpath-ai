@@ -80,7 +80,7 @@ const JobMarket = () => {
             <p className="text-gray-300">{data.analysis.insight}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
               <h3 className="text-lg font-semibold mb-3">Top Skills Demanded</h3>
               <div className="flex flex-wrap gap-2">
@@ -106,7 +106,7 @@ const JobMarket = () => {
 
           <div>
             <h3 className="text-xl font-bold mb-4">Live Job Listings</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {data.jobs.map((job, i) => (
                 <div key={i} className="bg-gray-900 border border-gray-800 rounded-xl p-5">
                   <h4 className="font-semibold text-white mb-2">{job.title}</h4>
