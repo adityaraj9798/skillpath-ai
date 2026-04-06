@@ -9,6 +9,7 @@ import ResumeChecker from './pages/ResumeChecker'
 import MockInterview from './pages/MockInterview'
 import JobMarket from './pages/JobMarket'
 import Profile from './pages/Profile'
+import CompanyPrep from './pages/CompanyPrep'
 import Navbar from './components/Navbar'
 
 const PrivateRoute = ({ children }) => {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/interview" element={<PrivateRoute><MockInterview /></PrivateRoute>} />
         <Route path="/jobs" element={<PrivateRoute><JobMarket /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="/company" element={<PrivateRoute><CompanyPrep /></PrivateRoute>} />
       </Routes>
     </div>
   )

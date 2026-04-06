@@ -33,6 +33,7 @@ const Navbar = () => {
               <Link to="/interview" className={linkClass}>Interview</Link>
               <Link to="/jobs" className={linkClass}>Jobs</Link>
               <Link to="/profile" className={linkClass}>Profile</Link>
+              <Link to="/company" className={linkClass}>Company Prep</Link>
               <button onClick={toggleDarkMode} className={`${darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-gray-200 text-gray-700'} px-3 py-2 rounded-lg text-sm transition`}>
                 {darkMode ? '☀️' : '🌙'}
               </button>
@@ -79,6 +80,7 @@ const Navbar = () => {
               <Link to="/interview" onClick={() => setMenuOpen(false)} className={linkClass}>Interview</Link>
               <Link to="/jobs" onClick={() => setMenuOpen(false)} className={linkClass}>Jobs</Link>
               <Link to="/profile" onClick={() => setMenuOpen(false)} className={linkClass}>Profile</Link>
+              <Link to="/company" className={linkClass}>Company Prep</Link>
               <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm text-left">
                 Logout
               </button>

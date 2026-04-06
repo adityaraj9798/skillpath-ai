@@ -7,6 +7,7 @@ import roadmapRoutes from './routes/roadmap.js'
 import resumeRoutes from './routes/resume.js'
 import interviewRoutes from './routes/interview.js'
 import jobRoutes from './routes/jobs.js'
+import companyRoutes from './routes/company.js'
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.use('/api/roadmap', roadmapRoutes)
 app.use('/api/resume', resumeRoutes)
 app.use('/api/interview', interviewRoutes)
 app.use('/api/jobs', jobRoutes)
+app.use('/api/company', companyRoutes)
 
 app.get('/', (req, res) => {
   res.json({ message: 'SkillPath AI Server is running! 🚀' })
