@@ -7,7 +7,7 @@ const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const { login } = useAuth()
+  const { login, darkMode } = useAuth()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -27,17 +27,24 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-[90vh] px-4">
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold mb-2">Welcome back 👋</h2>
-        <p className="text-gray-400 mb-6">Login to continue your learning journey</p>
-        {error && <div className="bg-red-500/10 border border-red-500 text-red-400 px-4 py-3 rounded-lg mb-4">{error}</div>}
+      <div className={`${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border rounded-2xl p-8 w-full max-w-md`}>
+        <div className="text-center mb-8">
+          <div className="text-5xl mb-4">👋</div>
+          <h2 className="text-3xl font-black mb-2">Welcome Back</h2>
+          <p className={darkMode ? 'text-gray-400' : 'text-gray-500'}>Login to continue your journey</p>
+        </div>
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl mb-4">
+            {error}
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"
             placeholder="Email"
             value={form.email}
             onChange={e => setForm({ ...form, email: e.target.value })}
-            className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className={`w-full ${darkMode ? 'bg-gray-800 border-gray-700 text-white' : 'bg-gray-100 border-gray-300 text-gray-900'} border rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500`}
             required
           />
           <input
@@ -45,19 +52,20 @@ const Login = () => {
             placeholder="Password"
             value={form.password}
             onChange={e => setForm({ ...form, password: e.target.value })}
-            className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className={`w-full ${darkMode ? 'bg-gray-800 border-gray-700 text-white' : 'bg-gray-100 border-gray-300 text-gray-900'} border rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500`}
             required
           />
           <button
             type="submit"
             disabled={loading}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 rounded-lg font-semibold transition disabled:opacity-50"
+            className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 rounded-xl font-semibold transition disabled:opacity-50 mt-2"
           >
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? 'Logging in...' : 'Login →'}
           </button>
         </form>
-        <p className="text-gray-400 text-center mt-4">
-          Don't have an account? <Link to="/register" className="text-indigo-400 hover:underline">Register</Link>
+        <p className={`text-center mt-6 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+          Don't have an account?{' '}
+          <Link to="/register" className="text-indigo-400 hover:text-indigo-300 font-semibold">Register</Link>
         </p>
       </div>
     </div>

@@ -10,11 +10,16 @@ import MockInterview from './pages/MockInterview'
 import JobMarket from './pages/JobMarket'
 import Profile from './pages/Profile'
 import CompanyPrep from './pages/CompanyPrep'
+import Statistics from './pages/Statistics'
 import Navbar from './components/Navbar'
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth()
-  if (loading) return <div className="flex items-center justify-center h-screen">Loading...</div>
+  if (loading) return (
+    <div className="flex items-center justify-center h-screen bg-gray-950 text-white">
+      Loading...
+    </div>
+  )
   return user ? children : <Navigate to="/login" />
 }
 
@@ -35,6 +40,7 @@ function App() {
         <Route path="/jobs" element={<PrivateRoute><JobMarket /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path="/company" element={<PrivateRoute><CompanyPrep /></PrivateRoute>} />
+        <Route path="/stats" element={<PrivateRoute><Statistics /></PrivateRoute>} />
       </Routes>
     </div>
   )
