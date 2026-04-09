@@ -13,7 +13,10 @@ dotenv.config()
 
 const app = express()
 
-app.use(cors({ origin: '*' }))
+app.use(cors({ 
+  origin: 'https://skillpath-ai-nine.vercel.app', // Your Vercel URL
+  credentials: true 
+}));
 app.use(express.json())
 
 app.use('/api/auth', authRoutes)
